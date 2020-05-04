@@ -1,18 +1,18 @@
 pipeline {
     agent any
-    tools {
-       // maven 'Maven3'
-        tool name: 'Maven3', type: 'maven'
+ /*   tools {
+        maven 'Maven3'
     }
-   /* options {
+    options {
         buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
     }*/
     stages{
         stage('Build'){
             steps{
-                 bat script: 'mvn clean package'
+                 def mvnHome = tool name: 'Maven3', type: 'maven'
+                 bat script: "${mvnHome}/bin/mvn clean package"
                  archiveArtifacts artifacts: 'target/*.war', onlyIfSuccessful: true
-            }
+            } 
         }
         stage('Upload War To Nexus'){
             steps{
