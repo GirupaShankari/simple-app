@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    tools {
+   /* tools {
         maven 'maven3'
     }
     options {
         buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
-    }
+    }*/
     stages{
         stage('Build'){
             steps{
