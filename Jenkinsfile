@@ -17,13 +17,13 @@ pipeline {
             steps{
                 script{
 
-                    def mavenPom = readMavenPom file: 'pom.xml'
-                    def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "simpleapp-snapshot" : "simpleapp-release"
+                  /*  def mavenPom = readMavenPom file: 'pom.xml'
+                    def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "simpleapp-snapshot" : "simpleapp-release" */
                     nexusArtifactUploader artifacts: [
                         [
                             artifactId: 'simple-app', 
                             classifier: '', 
-                            file: "target/simple-app-${mavenPom.version}.war", 
+                            file: "target/simple-app-1.0.0.war", 
                             type: 'war'
                         ]
                     ], 
@@ -32,8 +32,8 @@ pipeline {
                     nexusUrl: '10.110.39.220:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
-                    repository: nexusRepoName, 
-                    version: "${mavenPom.version}"
+                    repository: 'simpleapp-release', 
+                    version: "1.0.0"
                     }
             }
         }
