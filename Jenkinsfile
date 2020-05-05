@@ -23,15 +23,15 @@ pipeline {
                     def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "simpleapp-snapshot" : "simpleapp-release" */
                     nexusArtifactUploader artifacts: [
                         [
-                            artifactId: 'sample-app', 
+                            artifactId: 'simple-app', 
                             classifier: '', 
-                            file: "target/sample-app-2.0.0.war", 
+                            file: "target/simple-app-2.0.0.war", 
                             type: 'war'
                         ]
                     ], 
                     credentialsId: 'nexus3', 
                     groupId: 'in.javahome', 
-                    nexusUrl: '10.110.39.220:8081', 
+                    nexusUrl: '10.79.244.15:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
                     repository: 'simpleapp-release', 
